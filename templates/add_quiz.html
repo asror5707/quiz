@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %} Add Quiz {% endblock %}
+
+{% block body %}
+
+
+
+</div>
+
+<div class="container mt-4">
+    <form action="/add_quiz/" method="POST"> {% csrf_token %}
+    {{ forms }}
+    <button type="submit" class="btn btn-info">Submit</button><hr>
+</form>
+</div>
+<br>
+  <table class="table">
+    <thead>
+      <tr>
+
+        <th>Quiz</th>
+        <th> </th>
+        <th>Delete</th>
+        <th> </th>
+      </tr>
+    </thead>
+    {% for i in quiz1 %}
+    <tr>
+      <td><a href="/add_options/{{question.id}}/">{{i.nom}}</a></td>
+      <td>{{question.batafsil}}</td>
+      <td><a href="/delete_quiz/{{i.id}}/" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
